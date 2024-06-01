@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informations sur le Jeu Vidéo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h2 {
+            text-align: center;
+            padding: 20px;
+            background-color: #4CAF50;
+            color: white;
+            margin: 0;
+        }
+
+        table {
+            font-family: Arial, sans-serif;
+            border-collapse: collapse;
+            width: 80%; /* Réduire la largeur du tableau */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin: 20px auto; /* Centrer le tableau */
+            background-color: #fff;
+        }
+
+        table th, table td {
+            padding: 8px 12px; /* Réduire le padding des cellules */
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        table tbody tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        /* Added styles for form elements */
+        form {
+            display: inline-block; /* Display form as inline-block to be in the same line */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+
+
+            border-radius: 20px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+        .container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+        .back-button {
+            position: fixed;
+            bottom: 50px;
+            left: 0;
+            display: inline-block;
+            padding: 15px 25px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            background-color: #4CAF50;
+            color: #fff;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #45a049;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+
+        .btn-secondary {
+            background-color: #008CBA;
+        }
+
+        .btn-secondary:hover {
+            background-color: #0077A8;
+        }
+        nav {
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<nav>
+    <a href="/Home">Home</a>
+    <a href="/games/form">Add New Game</a>
+    <a href="/games/all">Show All Games</a>
+    <a href="/logout">Logout</a>
+</nav>
+
+<body>
+
+<h2>Informations sur le Jeu Vidéo</h2>
+<div class="container">
+    <a class="btn" href="//127.0.0.1:8000/register">Ajouter un utilisateur</a>
+    <a class="btn btn-secondary" href="//127.0.0.1:8000/logout">Déconnexion</a>
+    <a href="javascript:history.go(-1)" class="back-button">Retour</a>
+
+</div>
+<table>
+    <thead>
+    <tr>
+        <th>Nom</th>
+        <th>Développeur</th>
+        <th>Éditeur</th>
+        <th>Date de Sortie</th>
+        <th>Prix</th>
+        <th>Genre</th>
+        <th>Plateforme</th>
+        <th>Rating</th>
+        <th>LastModificationUser</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for game in Games %}
+        <tr>
+            <td>{{ game.name }}</td>
+            <td>{{ game.dev }}</td>
+            <td>{{ game.editor }}</td>
+            <td>{{ game.releasedate }}</td>
+            <td>{{ game.price }}</td>
+            <td>{{ game.gender }}</td>
+            <td>{{ game.platformgame }}</td>
+            <td>{{ game.rating }}</td>
+            <td>{{ game.lastmodificationuser }}</td>
+            <td> <a href="{{ path('app_games_show', {id: game.id}) }}">En Savoir Plus</a></td>
+            {% if app.user %}
+            <td>
+
+                <form action="{{ path('app_games_edit', {id: game.id}) }}" method="post">
+                    <label for="name">name :</label>
+                    <input type="text" id="name" name="name" value="{{ game.name }}" ><br>
+
+                    <label for="dev">dev :</label>
+                    <input type="text" id="dev" name="dev" value="{{ game.dev }}" ><br>
+
+                    <label for="editor">editor :</label>
+                    <input type="text" id="editor" name="editor" value="{{ game.editor }}" ><br>
+
+                    <label for="releasedate">releasedate :</label>
+                    <input type="date" id="releasedate" name="releasedate" value="{{ game.releasedate }}" ><br>
+
+                    <label for="price">price :</label>
+                    <input type="text" id="price" name="price" value="{{ game.price }}" ><br>
+
+                    <label for="gender">gender :</label>
+                    <input type="text" id="gender" name="gender" value="{{ game.gender }}" ><br>
+
+                    <label for="platformgame">platformgame :</label>
+                    <input type="text" id="platformgame" name="platformgame" value="{{ game.platformgame }}" ><br>
+
+                    <label for="rating">rating :</label>
+                    <input type="text" id="rating" name="rating" value="{{ game.rating }}" ><br>
+
+                    <label for="lastmodificationuser">lastmodificationuser :</label>
+                    <input type="text" id="lastmodificationuser" name="lastmodificationuser" value="{{ game.lastmodificationuser }}" ><br>
+
+                    <a href="{{ path('app_games_show', {id: game.id}) }}">En Savoir Plus</a>
+                    <a href="{{ path('app_games_delete', {id: game.id}) }}">Supprimer</a>
+                    <button type="submit">modifier</button>
+                </form>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+</body>
+
+</html>

@@ -1,0 +1,148 @@
+
+<nav>
+    <a href="/Home">Home</a>
+    <a href="/games/form">Add New Game</a>
+    <a href="/games/all">Show All Games</a>
+    <a href="/logout">Logout</a>
+</nav>
+
+<table>
+        <tr>
+        <td>id</td>
+        <td>name</td>
+        <td>dev</td>
+        <td>editor</td>
+        <td>releasedate</td>
+        <td>price</td>
+        <td>gender</td>
+        <td>platformgame</td>
+        <td>rating</td>
+        <td>lastmodificationuser</td>
+    </tr>
+        <tr>
+            <td>{{ Game.id }}</td>
+            <td>{{ Game.name }}</td>
+            <td>{{ Game.dev }}</td>
+            <td>{{ Game.editor }}</td>
+            <td>{{ Game.releasedate }}</td>
+            <td>{{ Game.price }}</td>
+            <td>{{ Game.gender }}</td>
+            <td>{{ Game.platformgame }}</td>
+            <td>{{ Game.rating }}</td>
+            <td>{{ Game.lastmodificationuser }}</td>
+    </tr>
+</table>
+
+
+<a href="https://www.minecraft.net/fr-fr" class="button">Detail</a>
+
+
+
+<style>
+    body {
+        background-color: #1a1a1a;
+        color: #161313;
+        font-family: 'Press Start 2P', cursive;
+        font-size: 20px;
+        margin: 0;
+        padding: 0;
+        background: url("https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWxreWFjdHA5Y2VuNjZ5ZG53eHRnZXZmeDNzYjJzY3hteHluc29pYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/7OH9z8lL8cnmkOxb6A/giphy.gif");
+        background-size: cover;
+    }
+    nav {
+        background-color: #333;
+        padding: 10px;
+        text-align: center;
+    }
+    .button {
+        position: fixed;
+        top: 50%;
+        left: 38%;
+        display: inline-block;
+        padding: 15px 25px;
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        background-color: #4CAF50;
+        color: #161313;
+        border-radius: 8px;
+        transition: background-color 0.3s;
+        width: 20%;
+    }
+
+    .button:hover {
+        background-color: #45a049;
+    }
+    nav a {
+        color: white;
+        text-decoration: none;
+        padding: 10px 20px;
+        margin: 0 10px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    nav a:hover {
+        background-color: #555;
+    }
+
+    /* Style the table */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background-color: white;
+    }
+
+    th, td {
+        border: 2px solid #4CAF50;
+        padding: 10px;
+        text-align: left;
+        font-size: 16px;
+    }
+
+    th {
+        background-color: #4CAF50;
+        color: #1a1a1a;
+    }
+
+
+
+    /* Style the form */
+    form {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        border: 2px solid #4CAF50;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+        background-color: #333;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+    }
+
+    select, button {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 16px;
+        box-sizing: border-box;
+        background-color: #4CAF50;
+        color: #1a1a1a;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-family: 'Press Start 2P', cursive;
+        font-size: 16px;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+</style>
+
